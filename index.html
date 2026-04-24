@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOON SHOP - 日本精品生活百货</title>
+    <!-- 引入外部资源 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 自定义配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4A574',    // 日式金茶色（主色）
+                        secondary: '#2C3E50',  // 深灰蓝（文字）
+                        light: '#F8F5F2',      // 米白色（背景）
+                        dark: '#1A1A1A',       // 纯黑
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .banner-shadow {
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            }
+            .product-card {
+                @apply bg-white rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-5 py-2 rounded-md hover:bg-primary/90 transition-all;
+            }
+        }
+    </style>
+    <!-- 引入日语字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-secondary font-sans">
+    <!-- 顶部通知栏 -->
+    <div class="bg-primary text-white text-center py-2 text-sm">
+        全国送料無料 | 国内3日以内発送 | 新規会員登録で10%OFFクーポンプレゼント
+    </div>
+
+    <!-- 头部导航 -->
+    <header class="sticky top-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <!-- 上导航：logo + 搜索 + 功能按钮 -->
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-primary tracking-wider">MOON SHOP</a>
+
+                <!-- 搜索框（PC端） -->
+                <div class="hidden md:flex flex-1 max-w-xl mx-8">
+                    <input type="text" placeholder="商品検索" class="w-full px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-primary">
+                    <button class="bg-primary text-white px-4 rounded-r-md">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+
+                <!-- 功能按钮 -->
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-secondary hover:text-primary"><i class="fa fa-user-o text-lg"></i></a>
+                    <a href="#" class="text-secondary hover:text-primary"><i class="fa fa-heart-o text-lg"></i></a>
+                    <a href="#" class="text-secondary hover:text-primary relative">
+                        <i class="fa fa-shopping-cart text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 下导航：分类菜单 -->
+            <nav class="hidden md:block border-t border-gray-200">
+                <ul class="flex justify-center gap-8 py-3">
+                    <li><a href="#" class="hover:text-primary font-medium">ホーム</a></li>
+                    <li><a href="#" class="hover:text-primary font-medium">食品・飲料</a></li>
+                    <li><a href="#" class="hover:text-primary font-medium">美容・コスメ</a></li>
+                    <li><a href="#" class="hover:text-primary font-medium">家電・雑貨</a></li>
+                    <li><a href="#" class="hover:text-primary font-medium">ファッション</a></li>
+                    <li><a href="#" class="hover:text-primary font-medium">ギフト・贈答</a></li>
+                    <li><a href="#" class="hover:text-primary font-medium">特売・セール</a></li>
+                </ul>
+            </nav>
+
+            <!-- 移动端菜单按钮 -->
+            <div class="md:hidden flex justify-between py-2 border-t border-gray-200">
+                <button class="text-secondary"><i class="fa fa-bars text-xl"></i></button>
+                <button class="text-secondary"><i class="fa fa-search text-xl"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 轮播Banner -->
+    <section class="container mx-auto px-4 py-6">
+        <div class="relative rounded-lg overflow-hidden banner-shadow h-[280px] md:h-[500px]">
+            <img src="https://picsum.photos/id/29/1600/500" alt="日本季節商品" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/30 flex flex-col justify-center px-8 md:px-16">
+                <h2 class="text-white text-2xl md:text-4xl font-bold mb-3">秋の新作 先行予約</h2>
+                <p class="text-white/90 text-lg md:text-xl mb-6">日本全国の厳選アイテムをお得に購入</p>
+                <button class="btn-primary w-fit">今すぐ見る</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分类快捷入口 -->
+    <section class="container mx-auto px-4 py-8">
+        <h3 class="text-xl font-bold mb-6 text-center">人気カテゴリー</h3>
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-4 text-center">
+            <div class="cursor-pointer hover:text-primary">
+                <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                    <i class="fa fa-cutlery text-xl"></i>
+                </div>
+                <p class="text-sm">食品</p>
+            </div>
+            <div class="cursor-pointer hover:text-primary">
+                <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                    <i class="fa fa-leaf text-xl"></i>
+                </div>
+                <p class="text-sm">コスメ</p>
+            </div>
+            <div class="cursor-pointer hover:text-primary">
+                <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                    <i class="fa fa-home text-xl"></i>
+                </div>
+                <p class="text-sm">雑貨</p>
+            </div>
+            <div class="cursor-pointer hover:text-primary">
+                <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                    <i class="fa fa-gift text-xl"></i>
+                </div>
+                <p class="text-sm">ギフト</p>
+            </div>
+            <div class="cursor-pointer hover:text-primary">
+                <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                    <i class="fa fa-fire text-xl"></i>
+                </div>
+                <p class="text-sm">人気</p>
+            </div>
+            <div class="cursor-pointer hover:text-primary">
+                <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                    <i class="fa fa-tags text-xl"></i>
+                </div>
+                <p class="text-sm">セール</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热销商品 -->
+    <section class="container mx-auto px-4 py-10">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold">今季の人気商品</h3>
+            <a href="#" class="text-primary hover:underline">すべて見る ></a>
+        </div>
+        
+        <!-- 商品网格 -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <!-- 商品1 -->
+            <div class="product-card">
+                <div class="relative">
+                    <img src="https://picsum.photos/id/42/400/400" alt="日本抹茶" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1">人気</span>
+                </div>
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">京都産 宇治抹茶 粉末 100g 無添加</h4>
+                    <div class="mt-2">
+                        <p class="text-primary font-bold">¥1,280</p>
+                        <p class="text-gray-400 text-xs line-through">¥1,500</p>
+                    </div>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+
+            <!-- 商品2 -->
+            <div class="product-card">
+                <div class="relative">
+                    <img src="https://picsum.photos/id/36/400/400" alt="日本陶器" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">手作り 陶器 マグカップ 日本製</h4>
+                    <div class="mt-2">
+                        <p class="text-primary font-bold">¥2,480</p>
+                    </div>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+
+            <!-- 商品3 -->
+            <div class="product-card">
+                <div class="relative">
+                    <img src="https://picsum.photos/id/614/400/400" alt="和菓子" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1">SALE</span>
+                </div>
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">東京 銘菓 和菓子 詰め合わせ</h4>
+                    <div class="mt-2">
+                        <p class="text-primary font-bold">¥1,850</p>
+                        <p class="text-gray-400 text-xs line-through">¥2,200</p>
+                    </div>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+
+            <!-- 商品4 -->
+            <div class="product-card">
+                <div class="relative">
+                    <img src="https://picsum.photos/id/81/400/400" alt="美容液" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">日本製 保湿美容液 敏感肌用</h4>
+                    <div class="mt-2">
+                        <p class="text-primary font-bold">¥3,200</p>
+                    </div>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 促销专区 -->
+    <section class="bg-primary/10 py-10 my-6">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-xl font-bold mb-2">期間限定！ポイント5倍キャンペーン</h3>
+            <p class="text-sm mb-6">会計時に自動的にポイント加算 → 次回のお買い物に利用可能</p>
+            <button class="btn-primary bg-secondary">キャンペーン詳細を見る</button>
+        </div>
+    </section>
+
+    <!-- 新品上架 -->
+    <section class="container mx-auto px-4 py-10">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold">新着商品</h3>
+            <a href="#" class="text-primary hover:underline">すべて見る ></a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <!-- 商品示例（复用结构） -->
+            <div class="product-card">
+                <img src="https://picsum.photos/id/20/400/400" alt="雑貨" class="w-full h-48 object-cover">
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">ナチュラル インテリア雑貨</h4>
+                    <p class="text-primary font-bold mt-2">¥1,690</p>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://picsum.photos/id/43/400/400" alt="緑茶" class="w-full h-48 object-cover">
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">静岡産 厳選緑茶 ティーバッグ</h4>
+                    <p class="text-primary font-bold mt-2">¥980</p>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://picsum.photos/id/103/400/400" alt="石鹸" class="w-full h-48 object-cover">
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">天然成分 洗顔石鹸 3個セット</h4>
+                    <p class="text-primary font-bold mt-2">¥1,500</p>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://picsum.photos/id/111/400/400" alt="扇子" class="w-full h-48 object-cover">
+                <div class="p-3">
+                    <h4 class="text-sm font-medium line-clamp-2 h-10">京都 伝統工芸 扇子 夏用</h4>
+                    <p class="text-primary font-bold mt-2">¥1,350</p>
+                    <button class="btn-primary w-full mt-3 text-sm py-1">カートに入れる</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部信息 -->
+    <footer class="bg-secondary text-white pt-10 pb-6 mt-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">MOON SHOP</h4>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        日本全国の厳選された商品を、<br>お手頃価格でお届けします。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">ショッピング</h4>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><a href="#" class="hover:text-primary">商品検索</a></li>
+                        <li><a href="#" class="hover:text-primary">新着商品</a></li>
+                        <li><a href="#" class="hover:text-primary">セール商品</a></li>
+                        <li><a href="#" class="hover:text-primary">ギフトランキング</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">サポート</h4>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><a href="#" class="hover:text-primary">お問い合わせ</a></li>
+                        <li><a href="#" class="hover:text-primary">配送について</a></li>
+                        <li><a href="#" class="hover:text-primary">返品・交換</a></li>
+                        <li><a href="#" class="hover:text-primary">よくある質問</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">お支払い</h4>
+                    <div class="flex gap-3 mb-4">
+                        <i class="fa fa-cc-visa text-xl"></i>
+                        <i class="fa fa-cc-mastercard text-xl"></i>
+                        <i class="fa fa-cc-paypal text-xl"></i>
+                        <i class="fa fa-credit-card text-xl"></i>
+                    </div>
+                    <p class="text-sm text-gray-300">安心・安全な決済方法</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 pt-6 text-center text-sm text-gray-400">
+                © 2025 MOON SHOP 日本. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
